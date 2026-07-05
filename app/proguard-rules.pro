@@ -1,0 +1,6 @@
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class com.lumodroid.data.** { *; }
+-keep class com.lumodroid.api.** { *; }
+-dontwarn okhttp3.**
+-dontwarn org.jsoup.**

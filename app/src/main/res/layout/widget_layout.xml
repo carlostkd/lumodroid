@@ -1,0 +1,55 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/widget_background"
+    android:padding="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:id="@+id/widget_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="◆"
+            android:textColor="#8B9CFF"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/widget_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="LumoDroid"
+            android:textColor="#8B9CFF"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
+            android:layout_marginStart="8dp" />
+
+        <TextView
+            android:id="@+id/widget_send_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="→"
+            android:textColor="#8B9CFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/widget_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tap to ask anything..."
+        android:textColor="#888888"
+        android:textSize="12sp"
+        android:fontFamily="monospace" />
+
+</LinearLayout>

@@ -1,0 +1,17 @@
+# Build output
+build/
+app/build/
+.gradle/
+
+# Local configuration
+local.properties
+
+# APK files
+*.apk
+
+# IDE files
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db

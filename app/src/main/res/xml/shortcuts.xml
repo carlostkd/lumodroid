@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="quick_ask"
+        android:enabled="true"
+        android:icon="@drawable/app_logo"
+        android:shortcutShortLabel="@string/shortcut_quick_ask_short"
+        android:shortcutLongLabel="@string/shortcut_quick_ask_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.lumodroid"
+            android:targetClass="com.lumodroid.MainActivity">
+            <extra android:name="shortcut_action" android:value="quick_ask" />
+        </intent>
+    </shortcut>
+    <shortcut
+        android:shortcutId="scan_network"
+        android:enabled="true"
+        android:icon="@drawable/app_logo"
+        android:shortcutShortLabel="@string/shortcut_scan_network_short"
+        android:shortcutLongLabel="@string/shortcut_scan_network_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.lumodroid"
+            android:targetClass="com.lumodroid.MainActivity">
+            <extra android:name="shortcut_action" android:value="scan_network" />
+        </intent>
+    </shortcut>
+    <shortcut
+        android:shortcutId="check_sms"
+        android:enabled="true"
+        android:icon="@drawable/app_logo"
+        android:shortcutShortLabel="@string/shortcut_check_sms_short"
+        android:shortcutLongLabel="@string/shortcut_check_sms_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.lumodroid"
+            android:targetClass="com.lumodroid.MainActivity">
+            <extra android:name="shortcut_action" android:value="check_sms" />
+        </intent>
+    </shortcut>
+</shortcuts>
