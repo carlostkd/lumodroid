@@ -8,7 +8,7 @@ import org.jsoup.Jsoup
 import org.jsoup.safety.Safelist
 import java.util.concurrent.TimeUnit
 
-class WebFetchTool : Tool("web_extract") {
+class WebFetchTool : Tool("web_fetch") {
     override val description = "Fetch a web page URL and extract its main content as readable text. Useful for reading articles, documentation, or any web page content."
     override val parameters = mapOf(
         "type" to "object",

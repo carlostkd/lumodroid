@@ -151,7 +151,7 @@ class SearchFilesTool : Tool("search_files") {
 }
 
 class ReadFileTool : Tool("read_file") {
-    override val description = "Read the contents of a text file."
+    override val description = "Read the contents of a TEXT file. For PDF files, use extract_pdf_text instead."
     override val parameters = mapOf(
         "type" to "object",
         "properties" to mapOf(
@@ -166,10 +166,48 @@ class ReadFileTool : Tool("read_file") {
             val file = File(path)
             if (!file.exists()) return "File not found: $path"
             if (!file.canRead()) return "Permission denied: $path"
+
+            if (file.name.lowercase().endsWith(".pdf")) {
+                return "This is a PDF file. Use the extract_pdf_text tool to extract its text content."
+            }
+
+            if (isLikelyBinary(file)) {
+                val ext = file.extension.ifBlank { "unknown" }
+                return "This appears to be a binary file ($ext). read_file only supports text files."
+            }
+
             val text = file.readText(Charsets.UTF_8)
-            text.take(10000)
+            if (text.length > 10000) {
+                text.take(10000) + "\n\n... [truncated, ${text.length - 10000} more characters]"
+            } else {
+                text
+            }
         } catch (e: Exception) {
             "Read error: ${e.message}"
         }
+    }
+
+    private fun isLikelyBinary(file: File): Boolean {
+        if (file.length() == 0L) return false
+        val ext = file.extension.lowercase()
+        val binaryExtensions = setOf(
+            "pdf", "png", "jpg", "jpeg", "gif", "bmp", "webp", "ico",
+            "mp3", "mp4", "avi", "mov", "wav", "flac", "ogg", "m4a",
+            "zip", "rar", "7z", "tar", "gz", "bz2",
+            "exe", "dll", "so", "bin", "apk", "jar", "class",
+            "db", "sqlite", "dat",
+        )
+        if (ext in binaryExtensions) return true
+        if (file.length() > 1024 * 1024) return true
+        val sample = ByteArray(8192)
+        file.inputStream().use { it.read(sample) }
+        var binaryCount = 0
+        for (b in sample) {
+            if (b == 0.toByte()) return true
+            if (b < 32 && b != '\n'.code.toByte() && b != '\r'.code.toByte() && b != '\t'.code.toByte()) {
+                binaryCount++
+            }
+        }
+        return binaryCount > sample.size / 10
     }
 }
