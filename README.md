@@ -1,4 +1,4 @@
-# LumoDroid — Your Private Android Assistant
+# LumoDroid Your Private Android Assistant
 
 LumoDroid is a powerful AI-driven Android assistant that runs entirely on your device, connecting to the Lumo AI API for natural language understanding and reasoning. 
 It can execute real system actions send SMS, make calls, manage files, run shell commands, edit images, and much more all through natural conversation.
